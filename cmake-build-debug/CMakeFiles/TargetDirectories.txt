@@ -1,0 +1,3 @@
+/Users/xuyang/projects/interview/cmake-build-debug/CMakeFiles/interview.dir
+/Users/xuyang/projects/interview/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/xuyang/projects/interview/cmake-build-debug/CMakeFiles/rebuild_cache.dir
