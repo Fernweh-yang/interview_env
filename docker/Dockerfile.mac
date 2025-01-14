@@ -1,0 +1,11 @@
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE} AS dev-base
+
+RUN sudo apt-get update && \
+    sudo apt-get install -y tzdata vim git zsh build-essential sudo apt-utils wget curl gdb gdbserver tree tig && \
+    sudo rm -rf /var/lib/apt/lists/*
+
+FROM dev-base AS  build-env
+
+COPY docker/install/install_ohmyzsh.sh /opt/
+RUN CHSH=yes RUNZSH=yes KEEP_ZSHRC=yes sh /opt/install_ohmyzsh.sh
