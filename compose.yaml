@@ -38,16 +38,23 @@ services:
   interview-env-mac:
     image: interview-env:mac
     container_name: interview-env-mac
+    tty: true
+    working_dir: /projects
     build:
       context: .
-      dockerfile: docker/Dockerfile.ubuntu
+      dockerfile: docker/Dockerfile.mac
       args:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
-        - BASE_IMAGE=noetic-desktop-full
+        - BASE_IMAGE=ubuntu:20.04
     volumes:
       - .:/projects
       - data_headquarters:/projects/datasets
+    environment:
+      - UID=${UID:-1000}
+      - QT_X11_NO_MITSHM=1
+      - XAUTHORITY=/tmp/.docker.xauth
+
 volumes:
   data_headquarters:
     name: data_headquarters

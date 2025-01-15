@@ -1,9 +1,13 @@
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE} AS dev-base
 
-RUN sudo apt-get update && \
-    sudo apt-get install -y tzdata vim git zsh build-essential sudo apt-utils wget curl gdb gdbserver tree tig && \
-    sudo rm -rf /var/lib/apt/lists/*
+RUN sed -i 's/archive.ubuntu.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
+ENV TZ=Asia/Shanghai DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && \ 
+    apt-get install -y tzdata vim git zsh build-essential sudo apt-utils cmake \
+                       wget curl gdb gdbserver tree tig && \
+    rm -rf /var/lib/apt/lists/*
 
 FROM dev-base AS  build-env
 
