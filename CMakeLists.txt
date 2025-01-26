@@ -3,4 +3,4 @@ project(interview)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(interview main.cpp)
+add_executable(main main.cpp)
